@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'login_page.dart';
+import 'home_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+        appId: '1:1046508604035:android:cec2c41c15e16f52f5e9b6',
+        apiKey: 'AIzaSyCfrl0x82tiORaD2uw5KWfgmckZxSo90uk',
+        projectId: 'actuf1-e7ce5',
+        messagingSenderId: '1046508604035',
+        measurementId: '432656429',
+        ),
+     );
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
     Widget build(BuildContext context) {
       return MaterialApp(
         title: 'Actu F1',
+        routes: {
+        '/login': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+        },
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
@@ -49,14 +66,16 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(height: 250),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                Navigator.pushNamed(context, '/login');
+                },
                 child: Container(
-                  width: 250, // Définissez la largeur souhaitée ici
-                  height: 65, // Définissez la hauteur souhaitée ici
+                  width: 250,
+                  height: 65,
                   alignment: Alignment.center,
                   child: Text(
                     'Connexion',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
                 style: ButtonStyle(
@@ -70,16 +89,16 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20), // Ajoutez de l'espace entre les boutons
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
                 child: Container(
-                  width: 250, // Définissez la largeur souhaitée ici
-                  height: 65, // Définissez la hauteur souhaitée ici
+                  width: 250,
+                  height: 65,
                   alignment: Alignment.center,
                   child: Text(
                       'Inscription',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
                 style: ButtonStyle(
