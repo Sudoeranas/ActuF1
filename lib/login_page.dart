@@ -60,7 +60,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
                     arguments: await _signInWithGoogle(),
                   );
                 } else {
-                  print("Connexion échouée");
+                  print("Connexion échoué");
                 }
               },
               child: Text('Se connecter avec Google'),
