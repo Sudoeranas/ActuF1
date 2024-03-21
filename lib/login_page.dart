@@ -154,7 +154,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
               backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFF0000)),
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
-            child: Text('Se connecter avec Google'),//
+            child: Text('Se connecter avec Google'),
             ),
           ],
         ),

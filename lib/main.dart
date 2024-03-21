@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'login_page.dart';
 import 'home_page.dart';
+import 'inscription_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         title: 'Actu F1',
         routes: {
         '/login': (context) => LoginPage(),
+        '/register': (context) => InscriptionPage(),
         '/home': (context) => HomePage(),
         },
         theme: ThemeData(
@@ -90,7 +92,9 @@ class MyHomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                Navigator.pushNamed(context, '/register');
+                },
                 child: Container(
                   width: 250,
                   height: 65,
