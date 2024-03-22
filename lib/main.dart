@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'login_page.dart';
 import 'home_page.dart';
 import 'inscription_page.dart';
+import 'user_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/register': (context) => InscriptionPage(),
         '/home': (context) => HomePage(),
+        '/user-page': (context) => UserPage(),
         },
         theme: ThemeData(
           primarySwatch: Colors.red,
