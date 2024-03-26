@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'history.dart';
+import 'schedule.dart';
+import 'team.dart';
+import 'driver.dart';
 
 
 String? getUsernameFromFirebase() {
@@ -20,16 +24,36 @@ String? getPhotoUrlFromFirebase() {
     }
   }
 
+class HomePage extends StatefulWidget {
+const HomePage({Key? key}) : super(key: key);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-class HomePage extends StatelessWidget {
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  static const List<Widget?> _widgetOptions = <Widget?>[
+      null,
+      Schedule(),
+      Driver(),
+      Team(),
+      History(),
+    ];
+    void _onItemTapped(int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
   @override
   Widget build(BuildContext context) {
   String? username = getUsernameFromFirebase();
   String? userProfilePic = getPhotoUrlFromFirebase();
-    return MaterialApp(
-          home: Scaffold(
+
+  Widget? selectedWidget = _widgetOptions[_selectedIndex];
+
+    return Scaffold(
             appBar: AppBar(
-              title: Text(username != null ? username : 'Utilisateur inconnu'),
+              title: Text("Hello, ${username != null ? username : 'Utilisateur inconnu'}"),
               actions: [
                 GestureDetector(
                   onTap: () {
@@ -49,9 +73,38 @@ class HomePage extends StatelessWidget {
               ],
             ),
             body: Center(
-              child: Text('Contenu de la page'),
+              child: selectedWidget ?? Container(
+                    //Contenu de la page d'accueil
+                    child: Text('Contenu de la page d"accueil'),
+              ),
             ),
-          ),
-        );
-      }
-    }
+            bottomNavigationBar: BottomNavigationBar(
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: 'Accueil',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.calendar_today_outlined),
+                      label: 'Calendrier',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.headphones),
+                      label: 'Classement Pilote',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.people),
+                      label: 'Classement Ecurie',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.flag),
+                      label: 'Historique',
+                    ),
+                  ],
+                  currentIndex: _selectedIndex,
+                  selectedItemColor: Colors.red,
+                  onTap: _onItemTapped,
+                ),
+              );
+             }
+            }

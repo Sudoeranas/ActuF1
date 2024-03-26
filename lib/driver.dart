@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class History extends StatelessWidget {
-const History({Key? key}) : super(key: key);
+class Driver extends StatelessWidget {
+const Driver({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,7 +10,7 @@ const History({Key? key}) : super(key: key);
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-            'History',
+            'Driver',
             style: TextStyle(
                 fontSize: 30.0,
                 color: Color(0xFFFF0000)

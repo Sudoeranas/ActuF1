@@ -6,6 +6,8 @@ import 'inscription_page.dart';
 import 'user_page.dart';
 import 'history.dart';
 import 'schedule.dart';
+import 'team.dart';
+import 'driver.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
         '/user-page': (context) => UserPage(),
         '/history': (context) => History(),
         '/schedule': (context) => Schedule(),
+        '/driver': (context) => Driver(),
+        '/team': (context) => Team(),
         },
         theme: ThemeData(
           primarySwatch: Colors.red,
