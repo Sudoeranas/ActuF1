@@ -4,6 +4,7 @@ import 'login_page.dart';
 import 'home_page.dart';
 import 'inscription_page.dart';
 import 'user_page.dart';
+import 'history.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => InscriptionPage(),
         '/home': (context) => HomePage(),
         '/user-page': (context) => UserPage(),
+        '/history': (context) => History(),
         },
         theme: ThemeData(
           primarySwatch: Colors.red,

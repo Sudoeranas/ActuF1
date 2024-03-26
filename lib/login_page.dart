@@ -8,6 +8,16 @@ class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+Future<void> _resetPassword(String email) async {
+  try {
+    await _auth.sendPasswordResetEmail(email: email);
+    // Afficher un message indiquant que l'e-mail de réinitialisation a été envoyé.
+  } catch (e) {
+    print(e);
+    // Gérer les erreurs.
+  }
+}
+
 Future<void> _signInWithEmailPassword(BuildContext context) async {
     try {
       UserCredential userCredential =
@@ -149,13 +159,39 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
                 );
               }
             },
-            style: ButtonStyle( // Modifier le style du bouton
+            style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(Size(250, 65)),
               backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFF0000)),
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
             child: Text('Se connecter avec Google'),
             ),
+                  TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Réinitialiser le mot de passe'),
+                          content: TextField(
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                _resetPassword(_emailController.text);
+                                Navigator.pop(context);
+                              },
+                              child: Text('Envoyer'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text('Mot de passe oublié?'),
+                    ),
           ],
         ),
       ),
