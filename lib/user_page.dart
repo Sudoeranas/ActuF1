@@ -14,7 +14,7 @@ String? getUsernameFromFirebase() {
 String? getPhotoUrlFromFirebase() {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      return user.photoURL; // Récupère l'URL de la photo de profil
+      return user.photoURL;
     } else {
       return null;
     }
@@ -34,6 +34,7 @@ String? getPhotoUrlFromFirebase() {
 
 class _UserPageState extends State<UserPage> {
 final _editUsernameController = TextEditingController();
+String? userProfilePic = getPhotoUrlFromFirebase();
 String _username = "Utilisateur inconnu";
 @override
   void initState() {

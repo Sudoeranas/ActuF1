@@ -11,7 +11,6 @@ class LoginPage extends StatelessWidget {
 Future<void> _resetPassword(String email) async {
   try {
     await _auth.sendPasswordResetEmail(email: email);
-    // Afficher un message indiquant que l'e-mail de réinitialisation a été envoyé.
   } catch (e) {
     print(e);
     // Gérer les erreurs.
@@ -181,10 +180,32 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                _resetPassword(_emailController.text);
-                                Navigator.pop(context);
-                              },
-                              child: Text('Envoyer'),
+                                _resetPassword(_emailController.text).then((_) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(
+                                                    content: Text("Un e-mail de réinitialisation a été envoyé"),
+                                                    duration: Duration(seconds: 5),
+                                                  ),
+                                                );
+                                                Navigator.pop(context);
+                                              }).catchError((error) {
+                                                String errorMessage = "Une erreur s'est produite. Veuillez réessayer plus tard.";
+                                                if (error is FirebaseAuthException) {
+                                                  if (error.code == 'user-not-found') {
+                                                    errorMessage = "Aucun utilisateur trouvé avec cet e-mail.";
+                                                  } else {
+                                                    errorMessage = "Erreur: ${error.message}";
+                                                  }
+                                                }
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(errorMessage),
+                                                    duration: Duration(seconds: 5),
+                                                  ),
+                                                );
+                                              });
+                                            },
+                                            child: Text('Envoyer'),
                             ),
                           ],
                         ),
