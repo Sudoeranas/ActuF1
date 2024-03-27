@@ -1,4 +1,4 @@
-package com.example.actuf1
+package com.epsi.actuf1
 
 import io.flutter.embedding.android.FlutterActivity
 
