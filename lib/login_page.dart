@@ -88,7 +88,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
       decoration: BoxDecoration(
         image: DecorationImage(
         image: AssetImage('assets/images/Accueil.png'),
-
+        fit: BoxFit.fill,
        ),
       ),
       padding: const EdgeInsets.all(16.0),
@@ -103,7 +103,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
               child: Image.asset('assets/images/Logo.png'),
               ),
             ),
-            SizedBox(height: 250),
+            SizedBox(height: 140),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
