@@ -74,7 +74,6 @@ class _HomePageState extends State<HomePage> {
             ),
             body: Center(
               child: selectedWidget ?? Container(
-                    //Contenu de la page d'accueil
                     child: Text('Contenu de la page d"accueil'),
               ),
             ),

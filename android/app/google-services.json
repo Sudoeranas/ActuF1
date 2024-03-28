@@ -23,7 +23,11 @@
         },
         {
           "client_id": "1046508604035-dce07s8ood1ku1un2foussspgkaocemf.apps.googleusercontent.com",
-          "client_type": 3
+          "client_type": 3,
+          "android_info": {
+            "package_name": "com.epsi.actuf1",
+            "certificate_hash": "a3dac3150089f712dbef689eb76358669cf8e145"
+          }
         }
       ],
       "api_key": [

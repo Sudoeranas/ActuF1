@@ -8,6 +8,8 @@ import 'history.dart';
 import 'schedule.dart';
 import 'team.dart';
 import 'driver.dart';
+import 'race_information_page.dart';
+import 'package:flutter/services.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,9 @@ void main() async{
         measurementId: '432656429',
         ),
      );
+  SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
   runApp(const MyApp());
 }
 
