@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'race_information_page.dart';
 
 class Race {
   final String raceName;
@@ -41,19 +42,19 @@ Future<List<Race>> getRaceCurrentSeason() async {
          );
          races.add(race);
       }
-      for (var race in races) {
-        print('Race Name: ${race.raceName}');
-        print('Date: ${race.date}');
-        print('Round: ${race.round}');
-        print('Circuit Name: ${race.circuitName}');
-        print('Country Image: ${race.countryImage}');
-        print('Country Name: ${race.countryName}');
-        print('---------------------------');
-      }
       return races;
   } else {
       throw Exception('Failed to load data');
     }
+}
+
+void _navigateToRaceInformationPage(BuildContext context, String year, String round) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => RaceInformationPage(year: year, round: round),
+    ),
+  );
 }
 
 class Schedule extends StatelessWidget {
@@ -103,7 +104,11 @@ const Schedule({Key? key}) : super(key: key);
                                   itemCount: upcomingRaces.length,
                                   itemBuilder: (BuildContext context, int index) {
                                     Race race = upcomingRaces[index];
-                                    return ListTile(
+                                    return GestureDetector(
+                                      onTap: () {
+                                        _navigateToRaceInformationPage(context, 'current', race.round);
+                                      },
+                                      child: ListTile(
                                       leading: Icon(Icons.flag), // Placeholder for country image
                                       title: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,6 +139,7 @@ const Schedule({Key? key}) : super(key: key);
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
+                                      ),
                                       ),
                                     );
                                   },
@@ -162,7 +168,11 @@ const Schedule({Key? key}) : super(key: key);
                                   itemCount: pastRaces.length,
                                   itemBuilder: (BuildContext context, int index) {
                                     Race race = pastRaces[index];
-                                    return ListTile(
+                                    return GestureDetector(
+                                      onTap: () {
+                                        _navigateToRaceInformationPage(context, 'current', race.round);
+                                      },
+                                      child: ListTile(
                                       leading: Icon(Icons.flag), // Placeholder for country image
                                       title: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,6 +203,7 @@ const Schedule({Key? key}) : super(key: key);
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
+                                      ),
                                       ),
                                     );
                                   },

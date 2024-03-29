@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               title: Text("Hello, ${username != null ? username : 'Utilisateur inconnu'}"),
               actions: [
                 GestureDetector(
@@ -102,6 +103,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                   currentIndex: _selectedIndex,
                   selectedItemColor: Colors.red,
+                  unselectedItemColor: Colors.black,
                   onTap: _onItemTapped,
                 ),
               );
