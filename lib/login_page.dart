@@ -213,7 +213,6 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
                     },
                     child: Text('Mot de passe oublié?'),
                     ),
-
           ],
         ),
       ),

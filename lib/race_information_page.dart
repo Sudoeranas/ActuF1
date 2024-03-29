@@ -403,11 +403,6 @@ class RaceInformationPage extends StatelessWidget {
                                NomPilote: raceData['Driver']['familyName'],
                                Equipe: raceData['Constructor']['name'],
                              );
-                            print('Position: ${raceData['position']}');
-                                  print('Pilot First Name: ${raceData['Driver']['givenName']}');
-                                  print('Pilot Last Name: ${raceData['Driver']['familyName']}');
-                                  print('Team: ${raceData['Constructor']['name']}');
-                                  print('----------------------------------------');
                              raceResultsList.add(raceResults);
                              }
                              return raceResultsList;
