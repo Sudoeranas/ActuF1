@@ -103,7 +103,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
               child: Image.asset('assets/images/Logo.png'),
               ),
             ),
-            SizedBox(height: 140),
+            Spacer(),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -213,6 +213,7 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
                     },
                     child: Text('Mot de passe oublié?'),
                     ),
+
           ],
         ),
       ),
