@@ -304,7 +304,7 @@ class RaceInformationPage extends StatelessWidget {
                                     return Center(child: CircularProgressIndicator());
                                   } else {
                                     if (snapshot.hasError) {
-                                      return Center(child: Text('Error: ${snapshot.error}'));
+                                      return Center(child: Text('Cette course n\'est pas encore terminée'));
                                     } else {
                                       List<RaceResults> raceResultsList = snapshot.data!;
                                       return ListView.builder(

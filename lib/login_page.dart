@@ -95,14 +95,6 @@ Future<Map<String, dynamic>?> _signInWithGoogle() async {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          Container(
-            color: Colors.white.withOpacity(0.2),
-            child:Container(
-              width: 225,
-              height: 180,
-              child: Image.asset('assets/images/Logo.png'),
-              ),
-            ),
             Spacer(),
               TextField(
                 controller: _emailController,
